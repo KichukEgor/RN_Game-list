@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import styled from 'styled-components/native'
+import { StatusBar } from 'expo-status-bar'
+import HomeScreen from './src/Screens/HomeScreen'
+
+const Container = styled.View`
+  padding-top: 24px;
+`
+
+const queryClient = new QueryClient()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>start!</Text>
+    <>
       <StatusBar style="auto" />
-    </View>
-  );
+      <QueryClientProvider client={queryClient}>
+        <Container>
+          <HomeScreen />
+        </Container>
+      </QueryClientProvider>
+    </>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
