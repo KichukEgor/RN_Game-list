@@ -1,12 +1,12 @@
 import React from 'react'
-import { ActivityIndicator, Alert, FlatList, RefreshControl, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Alert, FlatList, RefreshControl, Text, View } from 'react-native'
 import styled from 'styled-components/native'
 import Card from './Card'
-import { useFetchGames } from '../api/api'
+import { useHomeContext } from '../context/HomeContext'
 
 const Container = styled.View`
   display: flex;
-  padding: 10px;
+  padding: 0 10px;
 `
 
 const FlexCenter = styled.View`
@@ -16,7 +16,8 @@ const FlexCenter = styled.View`
 `
 
 const GameList = () => {
-  const { data: gameList, isLoading, error, isRefetching, refetch } = useFetchGames()
+  const { gamesQuery } = useHomeContext()
+  const { isLoading, error, data, refetch, isRefetching } = gamesQuery
 
   if (isLoading) {
     return (
@@ -33,19 +34,14 @@ const GameList = () => {
 
   return (
     <View>
-      {
-        <Container>
-          <FlatList
-            refreshControl={<RefreshControl onRefresh={refetch} refreshing={isRefetching} />}
-            data={gameList}
-            renderItem={({ item }) => (
-              <TouchableOpacity>
-                <Card title={item.title} short_description={item.short_description} developer={item.developer} />
-              </TouchableOpacity>
-            )}
-          />
-        </Container>
-      }
+      <Container>
+        <FlatList
+          refreshControl={<RefreshControl onRefresh={refetch} refreshing={isRefetching} />}
+          data={data}
+          keyExtractor={({ id }) => id}
+          renderItem={({ item }) => <Card {...item} />}
+        />
+      </Container>
     </View>
   )
 }
