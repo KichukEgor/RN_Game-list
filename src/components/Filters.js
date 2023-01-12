@@ -16,10 +16,10 @@ const Filters = () => (
   <ScrollView>
     <Title>Sort by:</Title>
     <SortingList />
-    <Title>Category:</Title>
-    <CategoryList />
     <Title>Platform:</Title>
     <PlatformList />
+    <Title>Category:</Title>
+    <CategoryList />
   </ScrollView>
 )
 export default Filters
