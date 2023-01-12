@@ -1,6 +1,5 @@
 
 # Free Games
-
 <!-- Alignment options!!!!! -->  
 <img alt="home screen" width="300" height="100%" src="https://github.com/KichukEgor/presentation_images/blob/game-list/photo_2023-01-12_08-36-37.jpg?raw=true">
 <img alt="modal view" width="300" height="100%" src="https://github.com/KichukEgor/presentation_images/blob/game-list/photo_2023-01-12_08-36-44.jpg?raw=true">  
