@@ -6,7 +6,7 @@ import useSetFilter from '../hooks/UseSetFilter'
 
 const RenderItem = ({ item }) => {
   const { isActive, toggleSetFilter } = useSetFilter('platform', item)
-  const setPlatformHandler = () => toggleSetFilter(item)
+  const setPlatformHandler = () => toggleSetFilter()
 
   return <FilterItem onPress={setPlatformHandler} isActive={isActive} item={item} />
 }

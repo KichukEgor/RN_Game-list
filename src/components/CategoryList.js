@@ -6,7 +6,7 @@ import useSetFilter from '../hooks/UseSetFilter'
 
 const RenderItem = ({ item }) => {
   const { isActive, toggleSetFilter } = useSetFilter('category', item)
-  const setCategoryHandler = () => toggleSetFilter(item)
+  const setCategoryHandler = () => toggleSetFilter()
 
   return <FilterItem onPress={setCategoryHandler} isActive={isActive} item={item} />
 }

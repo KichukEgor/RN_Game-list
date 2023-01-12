@@ -6,16 +6,13 @@ const UseSetFilter = (filter, item) => {
   const isActive = item === filters[filter]
 
   /* allows the user to remove the filter by pressing again */
-  const toggleSetFilter = useCallback(
-    (newValue) => {
-      if (filters[filter] === newValue) {
-        setFilters((prev) => ({ ...prev, [filter]: '' }))
-      } else {
-        setFilters((prev) => ({ ...prev, [filter]: item }))
-      }
-    },
-    [filter, filters, setFilters, item]
-  )
+  const toggleSetFilter = useCallback(() => {
+    if (filters[filter] === item) {
+      setFilters((prev) => ({ ...prev, [filter]: '' }))
+    } else {
+      setFilters((prev) => ({ ...prev, [filter]: item }))
+    }
+  }, [filter, filters, setFilters, item])
 
   return { isActive, toggleSetFilter }
 }
